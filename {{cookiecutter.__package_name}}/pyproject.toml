@@ -2,14 +2,14 @@
 name = "{{cookiecutter.__package_name}}"
 version = "0.0.0"
 description = "{{cookiecutter.description}}"
-{% set names = cookiecutter.author_names.split(',') %}
-{% set emails = cookiecutter.author_emails.split(',') %}
-{% set authors_list = [] %}
-{% for idx in range(names|length) %}
-    {% set author_entry = names[idx].strip() + ' <' + emails[idx].strip() + '>' %}
-    {% set _ = authors_list.append(author_entry) %}
-{% endfor %}
-authors = [{{ authors_list|map('quote')|join(', ') }}]
+{% set names = cookiecutter.author_names.split(',') -%}
+{% set emails = cookiecutter.author_emails.split(',') -%}
+{% set authors_list = [] -%}
+{% for idx in range(names|length) -%}
+    {% set author_entry = '"' + names[idx].strip() + ' <' + emails[idx].strip() + '>"' -%}
+    {% set _ = authors_list.append(author_entry) -%}
+{% endfor -%}
+authors = [{{ authors_list|join(', ') }}]
 license = "{{cookiecutter.license}}"
 readme = "README.md"
 packages = [{ include = "{{cookiecutter.__package_name}}", from = "src" }]
