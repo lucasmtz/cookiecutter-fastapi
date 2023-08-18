@@ -14,7 +14,7 @@ from {{cookiecutter.__package_name}}.app.exceptions import add_exception_handler
 from {{cookiecutter.__package_name}}.settings import BASE_URL, ENVIRONMENT, VERSION
 
 app = FastAPI(
-    title={{cookiecutter.__package_name|replace("_", " ")|title }},
+    title={{cookiecutter.__title}},
     version=VERSION,
     openapi_url=f"{BASE_URL}/openapi.json",
     docs_url=f"{BASE_URL}/docs",
@@ -37,7 +37,7 @@ add_exception_handlers(app)
 @app.get(BASE_URL, tags=["home"])
 async def homepage() -> dict:
     """
-    Homepage for the {{cookiecutter.__package_name|replace("_", " ")|title }} API.
+    Homepage for the {{cookiecutter.__title}} API.
 
     Returns:
         The homepage message.
