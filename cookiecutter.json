@@ -1,10 +1,12 @@
 {
   "project_name": "Project Name",
   "__package_name": "{{ cookiecutter.project_name | trim | lower | replace(' ', '_') | replace('-', '_') }}",
-  "__title": "{{ cookiecutter.__package_name.split('_') | join(' ') | title }}",
+  "__package_name_hyphen": "{{ cookiecutter.__package_name | replace('_', '-') }}",
+  "__title": "{{ cookiecutter.__package_name.replace('_', ' ') | title }}",
   "customer_name": "Customer or Client Name",
   "description": "Project descriprion",
-  "authors": "author1_name <author1_email>, author2_name <author2_email>",
+  "author_names": "author1_name,author2_name",
+  "author_emails": "author1_email,author2_email",
   "license": [
     "Proprietary",
     "Apache-2.0",

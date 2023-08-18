@@ -13,7 +13,8 @@ A [cookiecutter](https://cookiecutter.readthedocs.io/) template for FastAPI.  Th
         * **project_name** [Project Name]: `propensity-buy-ecommerce`
         * **customer_name** [Customer or Client Name]: `Some Big Company`
         * **description** [Project descriprion]: `A data science project for a big company`
-        * **authors:** [author1_name <author1_email>, author2_name <author2_email>]: `author1 <author1@example.com>, author2 <author2@example.com>`
+        * **author_names** [author1_name,author2_name]: `John Doe,Jane Doe`
+        * **author_emails** [author1_email,author2_email]: `johndoe@example,janedoe@example`
         * **license** [Choice Variable]: `1`
         * **python_version** [3.11]: 3.8+ (latest). If input is not valid the default is the latest version of python 3.
         * **dvc_remote_name** [DVC remote name]: `gcs`

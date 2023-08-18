@@ -16,4 +16,4 @@ load_dotenv()
 
 VERSION = __version__
 ENVIRONMENT = os.getenv("ENVIRONMENT", "dev")
-BASE_URL = os.getenv("BASE_URL", "/{{cookiecutter.__package_name}}".replace("_", "-"))
+BASE_URL = os.getenv("BASE_URL", "/{{cookiecutter.__package_name_hyphen}}")

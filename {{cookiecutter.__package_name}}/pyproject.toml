@@ -2,7 +2,13 @@
 name = "{{cookiecutter.__package_name}}"
 version = "0.0.0"
 description = "{{cookiecutter.description}}"
-authors = ["{{cookiecutter.authors}}"]
+{% set names = cookiecutter.author_names.split(',') %}
+{% set emails = cookiecutter.author_emails.split(',') %}
+{% set authors_list = [] %}
+{% for name, email in zip(names, emails) %}
+    {% set _ = authors_list.append('"' + name + ' <' + email + '>"') %}
+{% endfor %}
+authors = [{{ authors_list|join(', ') }}]
 license = "{{cookiecutter.license}}"
 readme = "README.md"
 packages = [{ include = "{{cookiecutter.__package_name}}", from = "src" }]
