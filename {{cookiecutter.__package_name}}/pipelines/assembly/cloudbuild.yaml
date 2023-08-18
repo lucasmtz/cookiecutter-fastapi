@@ -1,0 +1,78 @@
+# Use this file to build and deploy the docker image to Cloud Run
+# The cloudbuild trigger is triggered when a new tag is pushed to the repo
+steps:
+# - id: create-models-dir
+#   name: ubuntu
+#   entrypoint: bash
+#   args:
+#   - -c
+#   - mkdir -p models
+
+# - id: download-model
+#   name: gcr.io/cloud-builders/gsutil
+#   args:
+#   - -m
+#   - cp
+#   - -r
+#   - ${_STORAGE_BUCKET_MODELS}/models/${_MODEL}
+#   - models
+
+- id: check-repo
+  name: gcr.io/cloud-builders/gcloud
+  entrypoint: bash
+  args:
+  - -c
+  - |
+    if ! gcloud artifacts repositories describe ${_REPO_NAME} --location=${_REGION} --format='value(name)' 2>/dev/null; then
+      gcloud artifacts repositories create ${_REPO_NAME} --repository-format=docker --location=${_REGION} --description="Artifact Registry for {{cookiecutter.__package_name}}"
+    fi
+
+- id: pull-docker-image
+  name: gcr.io/cloud-builders/docker
+  entrypoint: bash
+  args: [-c, 'docker pull ${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_REPO_NAME}/${_IMAGE_NAME}:latest || exit 0']
+
+- id: build-docker-image
+  name: gcr.io/cloud-builders/docker
+  args:
+  - build
+  - -t=${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_REPO_NAME}/${_IMAGE_NAME}:${TAG_NAME}
+  - -t=${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_REPO_NAME}/${_IMAGE_NAME}:latest
+  - --cache-from=${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_REPO_NAME}/${_IMAGE_NAME}:latest
+  - -f=pipelines/assembly/Dockerfile
+  - .
+
+- id: push-docker-image
+  name: gcr.io/cloud-builders/docker
+  args:
+  - push
+  - ${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_REPO_NAME}/${_IMAGE_NAME}:${TAG_NAME}
+
+- id: deploy-to-cloud-run
+  name: gcr.io/cloud-builders/gcloud
+  args:
+  - beta
+  - run
+  - deploy
+  - ${_SERVICE_NAME}
+  - --image=${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_REPO_NAME}/${_IMAGE_NAME}:${TAG_NAME}
+  - --region=${_REGION}
+  - --project=${PROJECT_ID}
+  - --allow-unauthenticated
+  - --min-instances=0
+  - --max-instances=20
+  - --cpu-boost
+  - --execution-environment=gen1
+  - --set-env-vars=LOG_FORMAT=gcp
+
+images:
+- ${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_REPO_NAME}/${_IMAGE_NAME}:${TAG_NAME}
+- ${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_REPO_NAME}/${_IMAGE_NAME}:latest
+
+substitutions:
+  _REGION: example-region
+  _REPO_NAME: {{cookiecutter.__package_name}}-repo
+  _IMAGE_NAME: {{cookiecutter.__package_name}}-image
+  _SERVICE_NAME: {{cookiecutter.__package_name}}-service
+  # _STORAGE_BUCKET_MODELS: {{cookiecutter.dvc_remote_url}}
+  # _MODEL: # model to download from storage bucket

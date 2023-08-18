@@ -1,0 +1,93 @@
+repos:
+# - repo: https://github.com/floatingpurr/sync_with_poetry
+#   rev: 0.4.0
+#   hooks:
+#   - id: sync_with_poetry
+
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v4.4.0
+  hooks:
+  - id: check-added-large-files
+    args: [--maxkb=1024]
+  - id: check-case-conflict
+  - id: check-docstring-first
+  - id: check-json
+  - id: pretty-format-json
+    args: [--autofix, --indent, '2']
+    exclude: cookiecutter.json
+  - id: check-merge-conflict
+  # - id: check-yaml
+  - id: check-toml
+  # - id: debug-statements
+  - id: end-of-file-fixer
+  - id: mixed-line-ending
+  - id: name-tests-test
+    args: [--pytest-test-first]
+  - id: requirements-txt-fixer
+  - id: forbid-new-submodules
+  - id: fix-byte-order-marker
+  - id: fix-encoding-pragma
+    args: [--remove]
+  - id: trailing-whitespace
+
+- repo: https://github.com/MarcoGorelli/absolufy-imports
+  rev: v0.3.1
+  hooks:
+  - id: absolufy-imports
+    files: ^{{cookiecutter.__package_name}}/
+
+- repo: https://github.com/asottile/pyupgrade
+  rev: v3.4.0
+  hooks:
+  - id: pyupgrade
+    args: [--py39-plus]
+
+- repo: https://github.com/bemeurer/beautysh
+  rev: v6.2.1
+  hooks:
+  - id: beautysh
+
+# - repo: https://github.com/macisamuele/language-formatters-pre-commit-hooks
+#   rev: v2.9.0
+#   hooks:
+#   - id: pretty-format-yaml
+#     args: [--autofix, --indent, '2']
+
+
+- repo: https://github.com/asottile/blacken-docs
+  rev: 1.13.0
+  hooks:
+  - id: blacken-docs
+
+- repo: https://github.com/myint/docformatter
+  rev: v1.7.1
+  hooks:
+  - id: docformatter
+    additional_dependencies: [tomli]
+    args: [--config=pyproject.toml]
+
+# - repo: https://github.com/pycqa/pydocstyle
+#   rev: 6.3.0
+#   hooks:
+#   - id: pydocstyle
+#     additional_dependencies: [tomli]
+#     args: [--config=pyproject.toml]
+
+- repo: https://github.com/PyCQA/isort
+  rev: 5.12.0
+  hooks:
+  - id: isort
+    args: [--settings-path=pyproject.toml]
+
+# - repo: https://github.com/psf/black
+#   rev: 23.3.0
+#   hooks:
+#   - id: black
+#     args: [--config=pyproject.toml]
+
+- repo: https://github.com/compilerla/conventional-pre-commit
+  rev: v2.2.0
+  hooks:
+  - id: conventional-pre-commit
+    stages: [commit-msg]
+    args: []     # optional: list of Conventional Commits types to allow

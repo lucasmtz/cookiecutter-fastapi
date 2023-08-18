@@ -1,0 +1,144 @@
+exclude: ^docs/src/
+
+repos:
+- repo: https://github.com/floatingpurr/sync_with_poetry
+  rev: 1.0.0
+  hooks:
+  - id: sync_with_poetry
+
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v4.4.0
+  hooks:
+  - id: check-added-large-files
+    args: [--maxkb=1024]
+  - id: check-case-conflict
+  - id: check-docstring-first
+  - id: check-json
+  - id: pretty-format-json
+    args: [--autofix, --indent, '2']
+    exclude: cookiecutter.json
+  - id: check-merge-conflict
+  - id: check-yaml
+  - id: check-toml
+  - id: debug-statements
+  - id: end-of-file-fixer
+  - id: mixed-line-ending
+  - id: name-tests-test
+    args: [--pytest-test-first]
+  - id: requirements-txt-fixer
+  - id: forbid-new-submodules
+  - id: fix-byte-order-marker
+  - id: fix-encoding-pragma
+    args: [--remove]
+  - id: trailing-whitespace
+
+- repo: https://github.com/MarcoGorelli/absolufy-imports
+  rev: v0.3.1
+  hooks:
+  - id: absolufy-imports
+
+- repo: https://github.com/asottile/pyupgrade
+  rev: v3.4.0
+  hooks:
+  - id: pyupgrade
+    args: [--py{{cookiecutter.__python_version_no_dot }}-plus]
+
+- repo: https://github.com/bemeurer/beautysh
+  rev: v6.2.1
+  hooks:
+  - id: beautysh
+
+- repo: https://github.com/macisamuele/language-formatters-pre-commit-hooks
+  rev: v2.9.0
+  hooks:
+  - id: pretty-format-yaml
+    args: [--autofix, --indent, '2']
+
+
+- repo: https://github.com/asottile/blacken-docs
+  rev: 1.13.0
+  hooks:
+  - id: blacken-docs
+
+- repo: https://github.com/myint/docformatter
+  rev: v1.7.1
+  hooks:
+  - id: docformatter
+    additional_dependencies: [tomli]
+    args: [--config=pyproject.toml]
+
+- repo: https://github.com/pycqa/pydocstyle
+  rev: 6.3.0
+  hooks:
+  - id: pydocstyle
+    additional_dependencies: [tomli]
+    args: [--config=pyproject.toml]
+
+- repo: https://github.com/PyCQA/isort
+  rev: 5.12.0
+  hooks:
+  - id: isort
+    args: [--settings-path=pyproject.toml]
+
+- repo: https://github.com/psf/black
+  rev: 23.7.0
+  hooks:
+  - id: black
+    args: [--config=pyproject.toml]
+
+- repo: local
+  hooks:
+  - id: pylint
+    name: pylint
+    entry: pylint
+    language: system
+    types: [python]
+    exclude: ^(.*/)?(tests)/
+
+- repo: https://github.com/pre-commit/mirrors-mypy
+  rev: v1.4.1
+  hooks:
+  - id: mypy
+    args: [--config-file=pyproject.toml] # [--ignore-missing-imports]
+    additional_dependencies: [pydantic, fastapi, numpy]     # if any missing type error add to this list, i.e. [types-PyYAML, types-requests]
+    exclude: ^(.*/)?(tests)/
+
+- repo: https://github.com/PyCQA/bandit
+  rev: 1.7.5
+  hooks:
+  - id: bandit
+    args: [-c=pyproject.toml]
+    additional_dependencies: ['.[toml]']
+    exclude: ^(.*/)?(tests)/
+
+- repo: https://github.com/compilerla/conventional-pre-commit
+  rev: v2.2.0
+  hooks:
+  - id: conventional-pre-commit
+    stages: [commit-msg]
+    args: []     # optional: list of Conventional Commits types to allow
+
+- repo: https://github.com/iterative/dvc
+  rev: 3.10.1
+  hooks:
+  - id: dvc-pre-commit
+    language_version: python3
+    stages:
+    - commit
+  - id: dvc-pre-push
+    language_version: python3
+    additional_dependencies: ['.[gs]']
+    stages:
+    - push
+  - id: dvc-post-checkout
+    language_version: python3
+    additional_dependencies: ['.[gs]']
+    stages:
+    - post-checkout
+    always_run: true
+
+- repo: https://github.com/python-poetry/poetry
+  rev: 1.5.0    # add version here
+  hooks:
+  - id: poetry-check
+  # - id: poetry-lock

@@ -1,0 +1,28 @@
+{
+  "project_name": "Project Name",
+  "__package_name": "{{ cookiecutter.project_name | trim | lower | replace(' ', '_') | replace('-', '_') }}",
+  "customer_name": "Customer or Client Name",
+  "description": "Project descriprion",
+  "authors": "author1_name <author1_email>, author2_name <author2_email>",
+  "license": [
+    "Proprietary",
+    "Apache-2.0",
+    "BSD-2-Clause",
+    "BSD-3-Clause",
+    "BSD-4-Clause",
+    "GPL-2.0-only",
+    "GPL-2.0-or-later",
+    "GPL-3.0-only",
+    "GPL-3.0-or-later",
+    "LGPL-2.1-only",
+    "LGPL-2.1-or-later",
+    "LGPL-3.0-only",
+    "LGPL-3.0-or-later",
+    "MIT"
+  ],
+  "python_version": "3.11",
+  "__python_version": "{{ cookiecutter.python_version.split('.')[:2] | join('.')}}",
+  "__python_version_no_dot": "{{ cookiecutter.python_version.split('.')[:2] | join('')}}",
+  "dvc_remote_name": "DVC remote name",
+  "dvc_remote_url": "DVC remote url"
+}

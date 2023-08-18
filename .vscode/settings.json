@@ -1,0 +1,46 @@
+{
+  "autoDocstring.docstringFormat": "pep257",
+  "editor.bracketPairColorization.enabled": true,
+  "editor.guides.bracketPairs": "active",
+  "editor.rulers": [
+    120
+  ],
+  "files.exclude": {
+    "**.dvc": true,
+    "**/.coverage": true,
+    "**/.git": true,
+    "**/.ipynb_checkpoints": true,
+    "**/.mypy_cache": true,
+    "**/.pytest_cache": true,
+    "**/.venv": true,
+    "**/__pycache__": true,
+    ".vscode": true
+  },
+  "jupyter.notebookFileRoot": "${workspaceFolder}",
+  "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python",
+  "python.formatting.provider": "black",
+  "python.linting.banditEnabled": true,
+  "python.linting.mypyEnabled": true,
+  "python.linting.pydocstyleEnabled": true,
+  "python.linting.pylintEnabled": true,
+  "python.terminal.activateEnvInCurrentTerminal": true,
+  "python.terminal.activateEnvironment": true,
+  "python.testing.pytestArgs": [
+    "tests"
+  ],
+  "python.testing.pytestEnabled": true,
+  "python.testing.unittestEnabled": false,
+  "search.exclude": {
+    "**/.coverage": true,
+    "**/.git": true,
+    "**/.ipynb_checkpoints": true,
+    "**/.mypy_cache": true,
+    "**/.pytest_cache": true,
+    "**/.venv": true,
+    "**/__pycache__": true
+  },
+  "terminal.integrated.cwd": "${workspaceFolder}",
+  "workbench.colorCustomizations": {
+    "editor-ruler.foreground": "#0099AA33"
+  }
+}
