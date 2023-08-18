@@ -1,15 +1,6 @@
 #!/bin/sh
 
 # -----------------------------------------------------------------------------------------------------------------
-# Execute python script to validate cookiecutter.json
-# -----------------------------------------------------------------------------------------------------------------
-python hooks/pre_gen_project.py
-if [ $? -ne 0 ]; then
-    # If python script exits with an error (non-zero exit code), exit the shell script too
-    exit 1
-fi
-
-# -----------------------------------------------------------------------------------------------------------------
 # Install Python build dependencies - PyEnv builds Python from source so you need to install all the build dependencies
 # -----------------------------------------------------------------------------------------------------------------
 printf "\nInstalling Python build dependencies...\n"
