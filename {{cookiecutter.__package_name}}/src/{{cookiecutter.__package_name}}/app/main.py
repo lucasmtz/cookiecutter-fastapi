@@ -14,7 +14,7 @@ from {{cookiecutter.__package_name}}.app.exceptions import add_exception_handler
 from {{cookiecutter.__package_name}}.settings import BASE_URL, ENVIRONMENT, VERSION
 
 app = FastAPI(
-    title={{cookiecutter.__title}},
+    title="{{cookiecutter.__title}} API",
     version=VERSION,
     openapi_url=f"{BASE_URL}/openapi.json",
     docs_url=f"{BASE_URL}/docs",
