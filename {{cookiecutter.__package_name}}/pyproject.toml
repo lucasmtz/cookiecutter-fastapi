@@ -15,7 +15,7 @@ readme = "README.md"
 packages = [{ include = "{{cookiecutter.__package_name}}", from = "src" }]
 
 [tool.poetry.dependencies]
-python = "^{{cookiecutter.__python_version}}"
+python = "~{{cookiecutter.__python_version}}"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
