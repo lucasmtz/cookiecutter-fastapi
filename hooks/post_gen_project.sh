@@ -52,7 +52,9 @@ printf "\nInitializing dvc...\n"
 poetry run dvc init
 poetry run dvc config core.autostage true
 poetry run dvc remote add -d {{cookiecutter.dvc_remote_name}} {{cookiecutter.dvc_remote_url}}
-poetry run dvc remote modify {{cookiecutter.dvc_remote_name}} version_aware true
+if [[ "{{cookiecutter.dvc_remote_url}}" == gs://* ]]; then
+    poetry run dvc remote modify {{cookiecutter.dvc_remote_name}} version_aware true
+fi
 echo README.md >> .dvcignore
 poetry run dvc add data
 poetry run dvc add models

@@ -1,24 +1,38 @@
-# cookiecutter-fastpi
+# `cookiecutter-fastpi`: FastAPI Project Generator
 
-A [cookiecutter](https://cookiecutter.readthedocs.io/) template for FastAPI.  This template allows for the easy creation of a full project directory that is both language- and cloud-agnostic.
+Introducing `cookiecutter-fastpi`: a template for [FastAPI](https://fastapi.tiangolo.com/) powered by [cookiecutter](https://cookiecutter.readthedocs.io/). This template simplifies the process of initializing a versatile project directory. It's designed to be language-neutral and cloud-platform agnostic.
 
-## Usage
+## How to Use
 
-1.  Make sure you have git and [cookiecutter](https://cookiecutter.readthedocs.io/) installed by running the following commands in your terminal:
-    * `sudo apt update && sudo apt install git -y`
-    * `python3 -m pip install --upgrade pip`
-    * `python3 -m pip install --user cookiecutter`
-2.  Generate your project using the project template from this repository. You will be prompted for: **project name**, **customer/client name**, **description**, **authors** and **license**.
-    * `cookiecutter https://github.com/lucasmtz/cookiecutter-fastapi`
-        * **project_name** [Project Name]: `propensity-buy-ecommerce`
-        * **customer_name** [Customer or Client Name]: `Some Big Company`
-        * **description** [Project descriprion]: `A data science project for a big company`
-        * **author_names** [author1_name,author2_name]: `John Doe,Jane Doe`
-        * **author_emails** [author1_email,author2_email]: `johndoe@example,janedoe@example`
-        * **license** [Choice Variable]: `1`
-        * **python_version** [3.11]: 3.8+ (latest). If input is not valid the default is the latest version of python 3.
-        * **dvc_remote_name** [DVC remote name]: `gcs`
-        * **dvc_remote_url** [DVC remote url]: `gs://my-bucket` *GCS is preffered as this template is designed to work with GCP. Note: You have to create the bucket before running the project.*
-3.  The project directory will be created in the current directory.  You can navigate to the project directory using the `cd` command and open VS Code using the `code` command.
-    * `cd propensity_buy_ecommerce`
-    * `code .`
+### Prerequisites
+1. **Install `git` and `cookiecutter`:** Before generating your FastAPI project, ensure you have both `git` and `cookiecutter` installed:
+    * Update your packages: `sudo apt update && sudo apt install git -y`
+    * Upgrade pip (Python package installer): `python3 -m pip install --upgrade pip`
+    * Install `cookiecutter`: `python3 -m pip install --user cookiecutter`
+
+### Generating a New FastAPI Project
+2. **Create your FastAPI project:** Use the template from this repository. During this step, you'll be prompted for details like project name, customer/client details, description, author information, and more:
+    ```bash
+    cookiecutter https://github.com/lucasmtz/cookiecutter-fastapi
+    ```
+
+    * Example prompts:
+        * **Project Name**: `propensity-buy-ecommerce`
+        * **Customer or Client Name**: `Some Big Company`
+        * **Project Description**: `A data science project for a big company`
+        * **Authors**: `John Doe,Jane Doe`
+        * **Author Emails**: `johndoe@example.com,janedoe@example.com`
+        * **License Choice**: `1`
+        * **Python Version**: `x`, `x.x` or `x.x.x` (If provided input isn't valid, it defaults to the most recent Python 3.x version.)
+        * **DVC Remote Name**: `YourChosenName`
+        * **DVC Remote URL**: This can be a local path or [remote storage](https://dvc.org/doc/user-guide/data-management/remote-storage#supported-storage-types). Examples: `gs://my-bucket` or `/path/to/local/storage`. If you choose a remote storage, ensure the remote location has been set up before executing. Using remote storage is recommended for collaborative projects.
+> **Note**: This template initializes various configurations, such as updating `apt`, setting up `pyenv`, `poetry`, installing dependencies, setting up pre-commit hooks, initializing `dvc`, and creating the initial commit. If any of these configurations aren't required, or if you wish to make modifications, you should fork the repository and then adjust or remove items from the `hooks` directory accordingly.
+
+### Post-Generation Steps
+3. **Access your new project directory**: Once the project is generated, navigate to its directory and optionally open it in Visual Studio Code:
+    ```bash
+    cd propensity_buy_ecommerce
+    code .
+    ```
+
+By following these steps, you're on your way to developing a robust FastAPI project. Happy coding!
