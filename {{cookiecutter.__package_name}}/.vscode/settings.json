@@ -10,6 +10,9 @@
   "editor.rulers": [
     120
   ],
+  "files.associations": {
+    "*.py": "python"
+  },
   "files.exclude": {
     "**.dvc": true,
     "**/.coverage": true,
@@ -44,5 +47,8 @@
   "terminal.integrated.cwd": "${workspaceFolder}",
   "workbench.colorCustomizations": {
     "editor-ruler.foreground": "#0099AA33"
+  },
+  "workbench.editorAssociations": {
+    "*.py": "default"
   }
 }
