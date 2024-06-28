@@ -11,7 +11,7 @@ from {{cookiecutter.__package_name}}.logger import get_logger
 logger = get_logger(__name__)
 
 
-class LoggingMiddleware(BaseHTTPMiddleware):
+class LoggingMiddleware(BaseHTTPMiddleware):  # pylint: disable=too-few-public-methods
     """Middleware for logging requests and responses."""
 
     async def dispatch(self, request: Request, call_next: Callable) -> Response:
