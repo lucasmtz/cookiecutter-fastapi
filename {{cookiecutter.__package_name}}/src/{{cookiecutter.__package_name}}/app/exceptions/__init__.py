@@ -18,4 +18,4 @@ def add_exception_handlers(app: FastAPI) -> None:
         app -- FastAPI app instance.
 
     """
-    app.add_exception_handler(RequestValidationError, pydantic_validation_error_handler)
+    app.add_exception_handler(RequestValidationError, pydantic_validation_error_handler)  # type: ignore
