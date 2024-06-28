@@ -11,7 +11,11 @@ To run the app, execute the following command in the terminal: uvicorn {{cookiec
 
 from fastapi import FastAPI
 from {{cookiecutter.__package_name}}.app.exceptions import add_exception_handlers
+from {{cookiecutter.__package_name}}.app.middleware.logging_middleware import LoggingMiddleware
+from {{cookiecutter.__package_name}}.logger import get_logger
 from {{cookiecutter.__package_name}}.settings import BASE_URL, ENVIRONMENT, VERSION
+
+logger = get_logger(__name__)
 
 app = FastAPI(
     title="{{cookiecutter.__title}} API",
@@ -30,6 +34,9 @@ if ENVIRONMENT not in SHOW_DOCS_ENV:
 # First, import the routers: from {{cookiecutter.__package_name}}.app.routers import ...
 # Then, add the routers to the app: app.include_router(...)
 
+# Add middleware
+app.add_middleware(LoggingMiddleware)
+
 # Add exception handlers
 add_exception_handlers(app)
 
@@ -43,6 +50,7 @@ async def homepage() -> dict:
         The homepage message.
 
     """
+    logger.info("Root endpoint called.")
     return {app.title: app.version}
 
 

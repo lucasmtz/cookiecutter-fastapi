@@ -94,7 +94,7 @@ exclude_lines = [
 directory = "coverage_html_report"
 
 [tool.pytest.ini_options]
-addopts = ["--import-mode=importlib"]
+addopts = ["--import-mode=importlib", "-n", "auto"]
 filterwarnings = ["ignore::DeprecationWarning"]
 pythonpath = "."
 

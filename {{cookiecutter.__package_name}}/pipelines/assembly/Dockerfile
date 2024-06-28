@@ -36,4 +36,5 @@ ENV HOME=/root
 EXPOSE 8080
 
 # An ENTRYPOINT allows you to configure a container that will run as an executable
-ENTRYPOINT ["poetry", "run", "uvicorn", "{{cookiecutter.__package_name}}.app.main:app", "--host", "0.0.0.0", "--port", "8080"]
+# APP_MODULE is the module path to the FastAPI app: {{cookiecutter.__package_name}}.app.main
+ENTRYPOINT ["sh" "-c", "poetry run hypercorn ${APP_MODULE}:app --bind 0.0.0.0:8080"]

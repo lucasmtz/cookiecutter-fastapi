@@ -8,7 +8,9 @@ This module contains handlers for custom and third-party exceptions like Pydanti
 from fastapi import Request
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
-from {{cookiecutter.__package_name}} import logger
+from {{cookiecutter.__package_name}}.logger import get_logger
+
+logger = get_logger(__name__)
 
 
 async def pydantic_validation_error_handler(request: Request, exc: RequestValidationError) -> JSONResponse:

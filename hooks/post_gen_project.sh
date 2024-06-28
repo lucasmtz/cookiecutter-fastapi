@@ -32,7 +32,7 @@ fi
 # -----------------------------------------------------------------------------------------------------------------
 printf "\nCreating virtual environment for project...\n"
 poetry add fastapi google-cloud google-cloud-logging numpy python-dotenv rich setuptools uvicorn
-poetry add -G dev toml tomli bandit black commitizen coverage docformatter dvc[gs] ipykernel ipywidgets isort jupyterlab mypy pdoc3 pre-commit pydocstyle pylint pytest
+poetry add -G dev toml tomli bandit black commitizen coverage docformatter dvc[gs] ipykernel ipywidgets isort jupyterlab mypy pdoc3 pre-commit pydocstyle pylint pytest pytest-xdist hypercorn
 poetry update
 poetry install
 poetry env info

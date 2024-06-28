@@ -18,7 +18,7 @@ Please refer to the [Google Cloud Setup](docs/gcp_setup.md) document for instruc
 
 ## Deploy: Local
 ```sh
-sudo docker build -t {{cookiecutter.__package_name}} -f pipelines/assembly/Dockerfile .
+sudo docker build -t {{cookiecutter.__package_name}} --build-arg APP_MODULE={{cookiecutter.__package_name}}.app.main -f pipelines/assembly/Dockerfile .
 sudo docker run --env-file .env.example -p 8080:8080 {{cookiecutter.__package_name}}
 
 # Stop all containers
