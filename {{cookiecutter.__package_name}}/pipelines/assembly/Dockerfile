@@ -35,6 +35,12 @@ ENV HOME=/root
 # Expose the port that the app will run on
 EXPOSE 8080
 
+# Define build arguments
+ARG APP_MODULE
+
+# Set environment variables based on build arguments
+ENV APP_MODULE=${APP_MODULE}
+
 # An ENTRYPOINT allows you to configure a container that will run as an executable
 # APP_MODULE is the module path to the FastAPI app: {{cookiecutter.__package_name}}.app.main
 ENTRYPOINT ["sh", "-c", "poetry run hypercorn ${APP_MODULE}:app --bind 0.0.0.0:8080"]
