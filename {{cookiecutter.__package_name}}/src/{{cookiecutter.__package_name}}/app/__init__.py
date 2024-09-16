@@ -1,6 +1,7 @@
 """
-Initialize the FastAPI app package.
+Initialize the API package.
 
-This package contains the core components of the FastAPI application, including routers, main entry point, and settings.
+This package contains all the API-related modules, including routers, schemas, dependencies, exceptions, and
+middlewares.
 
 """

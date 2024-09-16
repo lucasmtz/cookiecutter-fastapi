@@ -1,5 +1,5 @@
 # Google Cloud Setup
-This document describes the steps required to setup a Google Cloud project for development and production of the **Nutshell application**.
+This document describes the steps required to setup a Google Cloud project for development and production of the **{{cookiecutter.project_name}} application**.
 
 ## Install the Google Cloud SDK
 We [install the Google Cloud SDK](https://cloud.google.com/sdk/docs/downloads-snap

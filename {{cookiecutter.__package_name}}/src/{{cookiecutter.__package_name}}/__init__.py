@@ -1,4 +1,6 @@
 """
+Initialize the {{cookiecutter.__package_name}} package.
+
 {{cookiecutter.project_name}}
 
 {{cookiecutter.description}}
