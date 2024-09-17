@@ -92,7 +92,7 @@ repos:
   hooks:
   - id: mypy
     args: [--config-file=pyproject.toml] # [--ignore-missing-imports]
-    additional_dependencies: [pydantic, fastapi, numpy]     # if any missing type error add to this list, i.e. [types-PyYAML, types-requests]
+    additional_dependencies: [pydantic, pydantic-settings, fastapi]     # if any missing type error add to this list, i.e. [types-PyYAML, types-requests]
     exclude: ^(.*/)?(tests)/
 
 - repo: https://github.com/PyCQA/bandit
