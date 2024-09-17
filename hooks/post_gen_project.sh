@@ -31,8 +31,8 @@ fi
 # Create virtual environment for project
 # -----------------------------------------------------------------------------------------------------------------
 printf "\nCreating virtual environment for project...\n"
-poetry add fastapi google-cloud google-cloud-logging numpy python-dotenv rich setuptools uvicorn hypercorn
-poetry add -G dev toml tomli bandit black commitizen coverage docformatter dvc[gs] ipykernel ipywidgets isort jupyterlab mypy pdoc3 pre-commit pydocstyle pylint pytest pytest-xdist
+poetry add fastapi pydantic-settings python-dotenv uvicorn hypercorn rich setuptools google-cloud google-cloud-logging
+poetry add -G dev bandit black commitizen coverage docformatter dvc[gs] ipykernel ipywidgets isort jupyterlab mypy pdoc3 pre-commit pydocstyle pylint pytest pytest-xdist
 poetry update
 poetry install
 poetry env info
@@ -52,9 +52,6 @@ printf "\nInitializing dvc...\n"
 poetry run dvc init
 poetry run dvc config core.autostage true
 poetry run dvc remote add -d {{cookiecutter.dvc_remote_name}} {{cookiecutter.dvc_remote_url}}
-if [[ "{{cookiecutter.dvc_remote_url}}" == gs://* ]]; then
-    poetry run dvc remote modify {{cookiecutter.dvc_remote_name}} version_aware true
-fi
 echo README.md >> .dvcignore
 poetry run dvc add data
 poetry run dvc add models
