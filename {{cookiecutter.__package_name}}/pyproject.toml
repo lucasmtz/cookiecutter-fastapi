@@ -62,7 +62,7 @@ warn_unused_ignores = true
 warn_unused_configs = true
 ignore_missing_imports = true
 exclude = ['tests']
-plugins = ["pydantic.mypy", "numpy.typing.mypy_plugin"]
+plugins = ["pydantic.mypy"]#, "numpy.typing.mypy_plugin"]
 follow_imports = "normal"
 
 [tool.bandit]
