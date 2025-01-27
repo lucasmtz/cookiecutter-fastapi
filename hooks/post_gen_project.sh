@@ -13,7 +13,7 @@ fi
 # Install python_version
 # -----------------------------------------------------------------------------------------------------------------
 pyenv install $PYTHON_VERSION -s
-pyenv global $PYTHON_VERSION
+pyenv local $PYTHON_VERSION
 
 # -----------------------------------------------------------------------------------------------------------------
 # Start a git repository if it not exists and copy .gitignore and .pre-commit-config.yaml

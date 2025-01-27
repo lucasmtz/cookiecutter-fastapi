@@ -14,11 +14,10 @@ COPY pyproject.toml poetry.lock ./
 
 # Install 3rd party dependencies.
 RUN poetry config virtualenvs.options.no-pip true \
-    && poetry config virtualenvs.options.no-setuptools true \
-    && poetry install \
+    && poetry sync \
     --no-ansi --no-interaction --no-plugins --no-cache \
     --no-root \
-    --compile --without dev --sync
+    --compile --only main
 
 # Copy over the source code
 COPY README.md ./

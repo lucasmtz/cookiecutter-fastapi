@@ -20,9 +20,9 @@
     "LGPL-3.0-or-later",
     "MIT"
   ],
-  "python_version": "3.12",
+  "python_version": "3.13",
   "__python_version": "{{ cookiecutter.python_version.split('.')[:2] | join('.')}}",
   "__python_version_no_dot": "{{ cookiecutter.python_version.split('.')[:2] | join('')}}",
-  "dvc_remote_name": "DVC remote name",
-  "dvc_remote_url": "DVC remote url"
+  "dvc_remote_name": "local",
+  "dvc_remote_url": "/tmp/dvc_remote"
 }

@@ -58,3 +58,27 @@ poetry completions bash >>~/.bash_completion
 printf "\nChanging poetry config to create the virtualenv inside the project's root directory...\n"
 poetry config virtualenvs.in-project true
 poetry config virtualenvs.use-poetry-python true
+
+# -----------------------------------------------------------------------------------------------------------------
+# Install python with pyenv from .python-version file
+# -----------------------------------------------------------------------------------------------------------------
+printf "\nInstalling python version from .python-version file...\n"
+pyenv install
+
+# -----------------------------------------------------------------------------------------------------------------
+# Create virtual environment for project
+# -----------------------------------------------------------------------------------------------------------------
+printf "\nCreating virtual environment for project...\n"
+poetry sync
+poetry env info
+printf "\nInstalling pre-commit...\n"
+poetry run pre-commit install
+printf "\nPull DVC remote...\n"
+poetry run dvc pull
+
+# ---------------------------------------------------------------------------------------------------------------
+# Final messages
+# ---------------------------------------------------------------------------------------------------------------
+printf "\nProject created successfully!\n"
+printf "\nTo activate the virtual environment, run:\n"
+printf "\npoetry env activate\n"
