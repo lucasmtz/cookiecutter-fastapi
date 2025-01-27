@@ -5,7 +5,7 @@
 # -----------------------------------------------------------------------------------------------------------------
 printf "\nInstalling Python build dependencies...\n"
 sudo apt-get update -y
-sudo apt-get install -y make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
+sudo apt install -y build-essential gcc libssl-dev libffi-dev python3-dev
 
 # -----------------------------------------------------------------------------------------------------------------
 # Install PyEnv - PyEnv is a tool that allows you to install multiple versions of Python on the same machine
